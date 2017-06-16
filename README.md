@@ -6,5 +6,5 @@
 
 舍弃spring boot 模版化的web 开发  不能通用工程化的技术价值不大(个人意见)
 
-页面开发选择 webpack+vue 生态静态页面   这样技术通用  
+页面开发选择 webpack+vue 生态静态页面    
 

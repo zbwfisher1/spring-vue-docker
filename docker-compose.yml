@@ -6,28 +6,29 @@ admin:
   ports:
     - 8761:8761
   environment:
-    - spring.profiles.active=peer1
-admin2:
-  build: docker
-  volumes:
-    - ./spring-boot-admin:/data
-    - ~/.m2:/root/.m2
-  ports:
-    - 8762:8762
-  environment:
-    - spring.profiles.active=peer2
-#  environment:
-#    - spring.profiles.active=application-peer1.properties
-#web1:
-#  build: spring-boot-docker-run
+    - spring.profiles.active=dev
+#admin2:
+#  build: docker
 #  volumes:
-#    - ./spring-boot-webapp-1:/data
+#    - ./spring-boot-admin:/data
 #    - ~/.m2:/root/.m2
 #  ports:
-#    - 8081:8080
-#  links:
-#    - admin
-#  command: mvn spring-boot:run -Dspring.boot.admin.client.url=http://localhost:8081
+#    - 8762:8762
+#  environment:
+#    - spring.profiles.active=peer2
+
+web:
+  build: docker
+  volumes:
+    - ./spring-boot-web:/data
+    - ~/.m2:/root/.m2
+  ports:
+    - 8000:8000
+  links:
+    - admin
+  command: mvn spring-boot:run -Dspring.boot.admin.client.url=http://localhost:8000
+
+
 #web2:
 #  build: spring-boot-docker-run
 #  volumes:
