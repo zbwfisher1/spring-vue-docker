@@ -29,7 +29,7 @@ public class BaseThreadClass {
         for (int i = 1; i <= 40; i++) {
 
             threadPool.execute(new ThreadPoolTask());
-            threadPool.execute(new ThreadPoolTask());
+//            threadPool.execute(new ThreadPoolTask());
         }
     }
 
