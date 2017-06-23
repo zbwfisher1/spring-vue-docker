@@ -34,7 +34,6 @@ public class TestDAOImpl implements ITestDAO {
 
     @Override
     public void testMaster() {
-//        List<Map<String,Object>> list = this.jdbcTemplate.queryForList("select * from test");
         List<Map<String,Object>> list = new ArrayList<>();
         Connection con1 = DataSourceUtils.getConnection(dataSource);
         Statement stmt = null;
