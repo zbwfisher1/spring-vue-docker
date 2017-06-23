@@ -29,18 +29,14 @@ public class TestDAOImpl implements ITestDAO {
     @Autowired
     private DataSource dataSource;
 
-//    @Autowired
-//    private SqlUtil sqlUtil;
+    @Autowired
+    private SqlUtil sqlUtil;
 
     @Override
     public void testMaster() {
 //        List<Map<String,Object>> list = this.jdbcTemplate.queryForList("select * from test");
-
         List<Map<String,Object>> list = new ArrayList<>();
-
         Connection con1 = DataSourceUtils.getConnection(dataSource);
-
-
         Statement stmt = null;
         try {
             ResultSet rs = null;
@@ -78,14 +74,17 @@ public class TestDAOImpl implements ITestDAO {
                 exception.printStackTrace();
             }
         }
-
-
         System.out.println(list);
     }
     @TargetDataSource(name="slave1")
     @Override
     public void testSlave1() {
-        List<Map<String,Object>> list = this.jdbcTemplate.queryForList("select * from test");
+        List<Map> list  = null;
+        try {
+            list = sqlUtil.queryBySql("select * from test");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println(list);
     }
 

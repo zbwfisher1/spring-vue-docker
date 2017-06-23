@@ -1,5 +1,11 @@
 package com.zbwfisher.datasource.connect;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import javax.sql.DataSource;
 import java.io.Reader;
 import java.sql.*;
@@ -12,31 +18,22 @@ import java.util.Map;
  * Created by zbw on 17/4/21.
  * 暂时只有面对hive数据仓库的操作
  */
+
+@Component
 public class SqlUtil {
 
-    private Connection conn;
-    private static DataSource dataSource;
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    @Autowired
+    private DataSource dataSource;
 
     public SqlUtil() {
     }
 
-    public SqlUtil(Connection conn) {
-        this.conn = conn;
-    }
-
-
-    public static Connection getConnection() throws SQLException {
-        Connection con = dataSource.getConnection();
+    public Connection getConnection() throws SQLException {
+        Connection con = DataSourceUtils.getConnection(this.dataSource);
         return con;
     }
 
-
-
-    public static boolean executeSql(String sql) throws Exception {
+    public boolean executeSql(String sql) throws Exception {
         boolean flag = false;
         Connection con = null;
         Statement stmt = null;
@@ -65,7 +62,7 @@ public class SqlUtil {
     }
 
 
-    public static List<Map> queryBySql(String sql) throws Exception {
+    public List<Map> queryBySql(String sql) throws Exception {
         ResultSet rs = null;
         int totalRecords = 0;
         List list = null;
@@ -125,7 +122,7 @@ public class SqlUtil {
     }
 
 
-    public static Map getMapBySql(String sql) throws Exception {
+    public Map getMapBySql(String sql) throws Exception {
         List list = queryBySql(sql);
         if ((list != null) && (list.size() > 1)) {
             throw new Exception("数据库查询操作：" + sql + "结果记录不唯一！");
@@ -138,13 +135,12 @@ public class SqlUtil {
     }
 
 
-
-    public static  <T> List<T> getListTBySql(String sql, T t)throws Exception {
+    public <T> List<T> getListTBySql(String sql, T t) throws Exception {
         List<Map> list = queryBySql(sql);
         List<T> olist = new ArrayList<T>();
         if (list != null) {
             try {
-                for(Map item:list){
+                for (Map item : list) {
                     olist.add((T) ToolUtil.mapToBean(item, t.getClass().newInstance(), false, true));
                 }
             } catch (InstantiationException e) {
@@ -157,12 +153,12 @@ public class SqlUtil {
     }
 
 
-    public static List<Object> getListObjectBySql(String sql, Class c) throws Exception {
+    public List<Object> getListObjectBySql(String sql, Class c) throws Exception {
         List<Map> list = queryBySql(sql);
         List<Object> olist = new ArrayList<Object>();
         if (list != null) {
             try {
-                for(Map item:list){
+                for (Map item : list) {
                     olist.add(ToolUtil.mapToBean(item, c.newInstance(), false, true));
                 }
 
@@ -176,14 +172,14 @@ public class SqlUtil {
     }
 
 
-    public static Object getObjectBySql(String sql, Class c) throws Exception {
+    public Object getObjectBySql(String sql, Class c) throws Exception {
         List list = queryBySql(sql);
         Object reObj = null;
         if ((list != null) && (list.size() > 1)) {
             throw new Exception("数据库查询操作：" + sql + "结果记录不唯一！");
         }
         if ((list != null) && (list.size() == 1)) {
-            Map map = (Map)list.get(0);
+            Map map = (Map) list.get(0);
             try {
                 reObj = ToolUtil.mapToBean(map, c.newInstance(), false, true);
             } catch (InstantiationException e) {
@@ -196,7 +192,7 @@ public class SqlUtil {
     }
 
 
-    public static PageModel queryPageBySql(String sql, int pageNo, int pageSize) throws Exception {
+    public PageModel queryPageBySql(String sql, int pageNo, int pageSize) throws Exception {
         ResultSet rs = null;
         int totalRecords = 0;
         List list = null;
@@ -274,7 +270,6 @@ public class SqlUtil {
         pm.setTotalRecords(totalRecords);
         return pm;
     }
-
 
 
 }
