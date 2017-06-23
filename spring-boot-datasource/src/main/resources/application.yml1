@@ -1,0 +1,49 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+
+# 主数据库
+master.datasource:
+  name: master
+  type: com.alibaba.druid.pool.DruidDataSource
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/test
+  username: root
+  password: admin
+
+# 其他数据库
+custom.datasource:
+    names: slave1,slave2
+    slave1.type: com.alibaba.druid.pool.DruidDataSource
+    slave1.driverClassName: com.mysql.jdbc.Driver
+    slave1.url: jdbc:mysql://localhost:3306/springBoot1
+    slave1.username: root
+    slave1.password: admin
+
+    slave2.type: com.alibaba.druid.pool.DruidDataSource
+    slave2.driverClassName: com.mysql.jdbc.Driver
+    slave2.url: jdbc:mysql://localhost:3306/springBoot2
+    slave2.username: root
+    slave2.password: admin
+
+
+#druid Configuration:
+druid:
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  maxWait:  60000
+  timeBetweenEvictionRunsMillis:  60000
+  minEvictableIdleTimeMillis: 300000
+  validationQuery: SELECT 1 FROM DUAL
+  testWhileIdle: true
+  testOnBorrow: false
+  testOnReturn: false
+  poolPreparedStatements: true
+  maxPoolPreparedStatementPerConnectionSize: 20
+  filters: stat,wall,log4j
+  connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+

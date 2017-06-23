@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.zbwfisher.service.configs.Wisely2Settings",
+      "name": "wisely2",
+      "type": "com.zbwfisher.service.configs.Wisely2Settings"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.zbwfisher.service.configs.Wisely2Settings",
+      "name": "wisely2.gender",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.zbwfisher.service.configs.Wisely2Settings",
+      "name": "wisely2.name",
+      "type": "java.lang.String"
+    }
+  ]
+}
