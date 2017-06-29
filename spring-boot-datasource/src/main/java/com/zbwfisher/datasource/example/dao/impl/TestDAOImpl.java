@@ -1,7 +1,7 @@
 package com.zbwfisher.datasource.example.dao.impl;
 
 
-import com.zbwfisher.datasource.connect.SqlUtil;
+import com.zbwfisher.datasource.common.sqlTools.SqlUtil;
 import com.zbwfisher.datasource.example.dao.ITestDAO;
 import com.zbwfisher.datasource.druid.DynamicDataSource.TargetDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +65,6 @@ public class TestDAOImpl implements ITestDAO {
                 }
                 list.add(map);
             }
-            System.out.println(list.size());
         } catch (Exception e) {
             e.printStackTrace();
             try {

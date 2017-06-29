@@ -5,5 +5,5 @@ package com.zbwfisher.datasource.example.service;
  */
 public interface ITestService {
 
-    void test();
+    String test(String param) throws Exception;
 }
