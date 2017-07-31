@@ -82,11 +82,24 @@
 			<artifactId>xspring-aop-logging</artifactId>
 			<version>0.3.2</version>
 		</dependency>
+
+
+
+
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-websocket</artifactId>
 			<version>8.5.6</version>
 		</dependency>
+
+
+		<dependency>
+			<groupId>com.zbwfisher</groupId>
+			<artifactId>spring-aop-async</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
 
 		<!--<dependency>-->
 			<!--<groupId>com.gith</groupId>-->

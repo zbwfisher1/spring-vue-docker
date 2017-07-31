@@ -6,4 +6,6 @@ package com.zbwfisher.datasource.example.service;
 public interface ITestService {
 
     String test(String param) throws Exception;
+
+    String test2(String param) throws Exception;
 }

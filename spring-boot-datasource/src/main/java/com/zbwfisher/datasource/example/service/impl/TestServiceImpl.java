@@ -34,10 +34,10 @@ public class TestServiceImpl implements ITestService {
         try {
 
             str.length();//将抛出异常
-        } catch (RuntimeException e){
-            throw new RuntimeException("运行时异常 测试 ");
+//        } catch (RuntimeException e){
+//            throw new RuntimeException("运行时异常 测试 ");
         } catch (Exception e) {
-            throw  new NullPointerException("12313131");
+//            throw new NullPointerException("12313131");
 //            throw new Exception("asdasdas");
 //            throw new RuntimeException("编号已经存在");
         }
@@ -66,4 +66,25 @@ public class TestServiceImpl implements ITestService {
         return "测试异常信息";
 
     }
+
+
+    @LogInfo
+    @LogException(value = {@LogException.Exc(value = Exception.class, stacktrace = true)}, warn = {@LogException.Exc({IllegalArgumentException.class})})
+    @Override
+    public String test2(String param) {
+
+
+        System.out.println();
+        Long startTime = System.currentTimeMillis();
+        this.testDAO.testQuery();
+        this.testDAO.testQuery();
+//        this.testDAO.testQuery2();
+
+        System.out.println("花费时间 "+(System.currentTimeMillis()-startTime));
+
+        return "测试异常信息";
+
+    }
+
+
 }

@@ -171,26 +171,26 @@
         </plugins>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>2.9.1</version>
-                    <configuration>
-                        <configLocation>checkstyle/checkstyle.xml</configLocation>
-                        <failOnViolation>true</failOnViolation>
-                        <consoleOutput>true</consoleOutput>
-                        <headerLocation>checkstyle/java.header</headerLocation>
-                        <!--<includeTestSourceDirectory>true</includeTestSourceDirectory>-->
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>compile</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
+                    <!--<version>2.9.1</version>-->
+                    <!--<configuration>-->
+                        <!--<configLocation>checkstyle/checkstyle.xml</configLocation>-->
+                        <!--<failOnViolation>true</failOnViolation>-->
+                        <!--<consoleOutput>true</consoleOutput>-->
+                        <!--<headerLocation>checkstyle/java.header</headerLocation>-->
+                        <!--&lt;!&ndash;<includeTestSourceDirectory>true</includeTestSourceDirectory>&ndash;&gt;-->
+                    <!--</configuration>-->
+                    <!--<executions>-->
+                        <!--<execution>-->
+                            <!--<phase>compile</phase>-->
+                            <!--<goals>-->
+                                <!--<goal>check</goal>-->
+                            <!--</goals>-->
+                        <!--</execution>-->
+                    <!--</executions>-->
+                <!--</plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>

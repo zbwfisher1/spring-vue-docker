@@ -1,6 +1,8 @@
 package com.zbwfisher.datasource.example.dao.impl;
 
 
+
+
 import com.zbwfisher.datasource.common.sqlTools.SqlUtil;
 import com.zbwfisher.datasource.example.dao.ITestDAO;
 import com.zbwfisher.datasource.druid.DynamicDataSource.TargetDataSource;
@@ -86,9 +88,34 @@ public class TestDAOImpl implements ITestDAO {
         System.out.println(list);
     }
 
+
+
     @TargetDataSource(name="slave2")
     @Override
     public void testSlave2() {
+        List<Map<String,Object>> list = this.jdbcTemplate.queryForList("select * from test");
+        System.out.println(list);
+    }
+
+    @Override
+    public void testQuery() {
+        try {
+            Thread.sleep(5000);
+
+            List<Map<String,Object>> list = this.jdbcTemplate.queryForList("select * from test");
+            System.out.println(list);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void testQuery2() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<Map<String,Object>> list = this.jdbcTemplate.queryForList("select * from test");
         System.out.println(list);
     }

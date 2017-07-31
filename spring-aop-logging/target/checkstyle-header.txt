@@ -1,4 +1,0 @@
-/\*{83}\s?$
-\* Copyright \(c\) 20\d\d\. Nickolay Gerilovich\. Russia\.\s?$
-\*   Some Rights Reserved\.\s?$
-\*{84}/\s?$

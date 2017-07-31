@@ -7,4 +7,8 @@ public interface ITestDAO {
     void testMaster();
     void testSlave1();
     void testSlave2();
+
+
+    void testQuery();
+    void testQuery2();
 }
